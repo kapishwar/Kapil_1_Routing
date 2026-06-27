@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mt-4">
+        <button
+          routerLink="userform"
+          class="mb-5 adduser"
+          mat-flat-button
+          color="primary"
+        >
+          Add User <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <ul class="list-group" *ngIf="UserArr.length > 0; else nouser">
+        <li
+          class="list-group-item d-flex justify-content-between"
+          routerLinkActive="active"
+          [routerLink]="[user.id]"
+          *ngFor="let user of UserArr"
+        >
+          <span> 📍 {{ user.name }} </span>
+
+          <strong
+            class="badge p-2"
+            [ngClass]="{
+              'badge-success': user.role === 'Manager',
+              'badge-warning': user.role === 'Tester',
+              'badge-danger': user.role === 'Developer',
+              'badge-secondary': user.role === 'Designer'
+            }"
+          >
+            {{ user.role }}
+          </strong>
+        </li>
+      </ul>
+
+      <ng-template #nouser>
+        <p class="alert alert-info text-center">(404) Users Not found....</p>
+      </ng-template>
+    </div>
+
+    <div class="col-md-6">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

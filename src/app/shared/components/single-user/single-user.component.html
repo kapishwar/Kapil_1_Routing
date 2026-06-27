@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+     
+          <mat-card *ngIf="UserArr.length>0 else nouser">
+            <mat-card-header class="profilecard">
+              <img [src]="UserObj.img" [alt]="UserObj.name" />
+            </mat-card-header>
+            <mat-card-subtitle>
+             <strong class="mr-3">
+                Name : {{ UserObj.name }}
+             </strong>
+            
+            </mat-card-subtitle>
+            <hr>
+
+            <mat-card-content>
+                Role : <span>({{UserObj.role}})</span>
+                <br>
+                Email : <span> {{UserObj.email}} </span>
+                <br>
+                Phone : <span> {{UserObj.phone}} </span>
+                <br>
+                City : <span> {{UserObj.city}} </span>
+            </mat-card-content>
+
+            <hr>
+
+            <mat-card-actions class="d-flex justify-content-center">
+
+                <button routerLink="edit" class="mr-3" mat-flat-button color="primary">✒️ Edit</button>
+                <button (click)="OnRemove(UserObj.id)"  mat-flat-button color="warn">♻️ Remove</button>
+            </mat-card-actions>
+            
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #nouser>
+      <p class="alert alert-info">User in not Available...</p>
+    </ng-template>
+ 

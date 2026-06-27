@@ -1,0 +1,65 @@
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <mat-card>
+                 <mat-card-title>
+                  🛒  {{ProObj.name}}
+                 </mat-card-title>
+                 <hr>
+
+                 <mat-card-content>
+                    <figure>
+                        <img [src]="ProObj.image" [alt]="ProObj.name">
+                    </figure>
+
+                    
+                    
+                    <div>
+                    <span> 🌟Rating : {{ProObj.rating}} </span>
+                    </div>
+
+                   
+
+                    <div>
+                        <span class="badge" [ngClass]="{
+                            'badge-success' : ProObj.rating >= 4,
+                            'badge-danger' : ProObj.rating <4
+                        }" >
+                            Rating : {{ProObj.rating}}
+                        </span>
+                    </div>
+
+
+                     <div>
+                          Stock :
+                        <span [ngClass]="{
+                            'text-success': ProObj.stock>=50,
+                            'text-danger': ProObj.stock <=10,
+                            'text-warning' : ProObj.stock >= 11 && ProObj.stock <=49 
+                        }">
+                           {{ProObj.stock}}
+                        </span>
+                    </div>
+
+                    <div>
+                        <span> Price : {{ProObj.price | currency : 'INR'}} </span>
+                    </div>
+
+                    <div>
+                        <span> Category : {{ProObj.category}} </span>
+                    </div>
+
+                 </mat-card-content>
+                 <hr>
+
+
+                 <mat-card-actions class="justify-content-between d-flex">
+                    <button routerLink="edit" mat-flat-button color="primary">✒️ Edit</button>
+                    <button (click)="OnRemovepro(ProObj.id)"  mat-flat-button color="warn">♻️ Remove</button>
+                 </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <mat-card>
+        <h2>📝 {{ isInEditMode ? "Update User " : "Add Users" }}</h2>
+
+        <form [formGroup]="UserForm" (ngSubmit)="OnUserSubmit()">
+          <div class="form-group">
+            <label for="name">💠 User Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              title="name"
+            />
+
+            <div
+              class="text-danger"
+              *ngIf="
+                control['name'].touched &&
+                control['name'].hasError('required')
+              "
+            >
+              User Name is required felid
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">💠 Email</label>
+            <input
+              type="email"
+              title="email"
+              class="form-control"
+              formControlName="email"
+            />
+
+            <div
+              class="text-danger"
+              *ngIf="
+                control['email'].touched &&
+                control['email'].hasError('required')
+              "
+            >
+              Email is required..
+            </div>
+
+            <div
+              class="text-danger"
+              *ngIf="
+                control['email'].dirty && control['email'].hasError('pattern')
+              "
+            >
+              Invalid email ...
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">💠 Mobile Number</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="phone"
+              title="phone"
+            />
+
+            <div
+              class="text-danger"
+              *ngIf="
+                control['phone'].touched &&
+                control['phone'].hasError('required')
+              "
+            >
+              Mobile number is required...
+            </div>
+
+            <div
+              class="text-danger"
+              *ngIf="
+                control['phone'].dirty && control['phone'].hasError('pattern')
+              "
+            >
+              Invalid Mobile number...
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="city">City</label>
+            <select
+              name="city"
+              id="city"
+              class="form-control"
+              formControlName="city"
+            >
+              <option value="">Select City</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Pune">Pune</option>
+              <option value="Ahmedabad">Ahmedabad</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Surat">Surat</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Kanpur">Kanpur</option>
+              <option value="Nagpur">Nagpur</option>
+              <option value="Indore">Indore</option>
+              <option value="Bhopal">Bhopal</option>
+              <option value="Patna">Patna</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Kochi">Kochi</option>
+              <option value="Visakhapatnam">Visakhapatnam</option>
+              <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+            </select>
+
+            <div class="text-danger" *ngIf="control['city'].touched && control['city'].hasError('required')">
+             City is required 
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="role">Role</label>
+
+            <select name="role" id="role" formControlName="role" class="form-control">
+              <option value="">Select Role</option>
+              <option value="Developer">Developer</option>
+              <option value="Designer">Designer</option>
+              <option value="Manager">Manager</option>
+              <option value="Tester">Tester</option>
+            </select>
+
+            <div class="text-danger" *ngIf="control['role'].touched && control['role'].hasError('required')">
+              User Role is required 
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="img">Img URL</label>
+            <input type="url" class="form-control" formControlName="img" title="img">
+
+            <div class="text-danger" *ngIf="control['img'].touched && control['img'].hasError('required')">
+              Img URL is required 
+            </div>
+
+            <div class="text-danger" *ngIf="control['img'].dirty && control['img'].hasError('pattern')">
+              Invalid img url 
+            </div>
+          </div>
+
+
+
+
+      
+
+          <button *ngIf="!isInEditMode" mat-raised-button color="primary" class="w-100">
+            Add User
+          </button>
+        </form>
+        <button (click)="UpdateUser()" *ngIf="isInEditMode" mat-raised-button color="warn" class="w-100" >Update User</button>
+      </mat-card>
+    </div>
+  </div>
+</div>

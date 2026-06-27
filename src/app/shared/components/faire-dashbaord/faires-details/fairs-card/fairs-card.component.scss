@@ -1,0 +1,27 @@
+.card{
+    position: relative;
+    padding: 30px;
+    cursor: pointer;
+    &.active{
+    background-image: linear-gradient(to right, #1f7a6c, #2c8c7b, #3fa796);
+    color: #fff;
+    }
+    .typedate{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    color: #000;
+}
+
+}
+
+
+.card.active::after{
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: #3fa796;
+    position: absolute;
+    top: calc(50% - 10px);
+    right: -10px;
+    transform: rotate(45deg);
+}

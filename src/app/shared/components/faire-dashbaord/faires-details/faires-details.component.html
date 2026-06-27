@@ -1,0 +1,22 @@
+
+<div>
+    <figure  class="banner" >
+        <img [src]="FairObj.bannerUrl" [alt]="FairObj.fairName">
+       
+    </figure>
+   <div class="text">
+      <span>
+            {{FairObj.fairName}}
+        </span>
+        <p>
+            Event Type : {{FairObj.type}}
+        </p>
+        <p>
+            Registation Deadline : {{(FairObj.endDate * 1000)| date}}
+        </p>
+   </div>
+    <figcaption>
+        <p [innerHTML]="FairObj.candidateDescription">
+        </p>
+    </figcaption>
+</div>

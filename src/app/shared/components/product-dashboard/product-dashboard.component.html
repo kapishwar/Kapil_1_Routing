@@ -1,0 +1,42 @@
+<button
+  mat-raised-button
+  routerLink="proform"
+  class="mt-2 addbtn"
+  color="primary"
+>
+  Add Product
+</button>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-6" *ngFor="let pro of ProductArr">
+          <mat-card  
+          routerLinkActive="active"
+          [routerLink]="pro.id"  class="mt-5">
+            <mat-card-title>
+              <mat-card-subtitle>
+                {{ pro.name }}
+              </mat-card-subtitle>
+
+              <mat-card-content class="mtc">
+                <figure>
+                  <img [src]="pro.image" [alt]="pro.name" />
+                </figure>
+                <hr />
+
+                <span></span>
+              </mat-card-content>
+            </mat-card-title>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+        
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

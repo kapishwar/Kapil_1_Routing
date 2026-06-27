@@ -1,0 +1,19 @@
+
+
+<mat-card class="mt-3 card" 
+[routerLink]="FairesObje.fairId"
+routerLinkActive="active"
+>
+    <h1>
+        {{FairesObje.fairName}}
+    </h1>
+
+    <div class="typedate">
+        <p>
+            Type : {{FairesObje.type}}
+        </p>
+        <p>
+            Date : {{(FairesObje.startDate * 1000) | date}}
+        </p>
+    </div>
+</mat-card>
